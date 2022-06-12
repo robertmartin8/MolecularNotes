@@ -7,13 +7,14 @@ This repository contains my Obsidian implementation of **Molecular Notes** – a
 
 1. Install [Obsidian](https://obsidian.md/) and create an Obsidian Vault (a folder to store all your notes). Mine is named `ObsidianVault` and I put it in my home folder.
 2. Clone this repository into your vault (on GitHub click the green `Code` button, then `Download ZIP`, and copy-paste the contents into your vault using Finder or File explorer)
-3. In Obsidian, go to Settings -> Files & Links -> Default location for new attachments -> _attachments  (make this folder if it doesn't exist).
-4. Set up templates:
+3. Delete the README.md file.
+4. In Obsidian, go to Settings -> Files & Links -> Default location for new attachments -> _attachments  (make this folder if it doesn't exist).
+5. Set up templates:
 	1. Settings -> Core plugins -> Templates (switch on). 
 	2. Settings -> Templates -> Template folder location -> _templates.
 	3. (Optional) set hotkey in Settings -> Hotkeys -> Templates: Insert Template -> ⌘T
-5. Check you have the below plugins enabled: Settings -> Core Plugins
-6. (Optional) Change the colour theme to something you like! You can find this in Settings -> Appearance -> Themes
+6. Check you have the below plugins enabled: Settings -> Core Plugins
+7. (Optional) Change the colour theme to something you like! You can find this in Settings -> Appearance -> Themes
 
 
 ### Plugins
