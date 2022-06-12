@@ -2,7 +2,7 @@
 
 ![logo](http://reasonabledeviations.com/assets/images/secondbrain1/logo_big.png)
 
-This repository contains my Obsidian implementation of Molecular Notes -- a Second Brain system that I use to organise my thinking. You can read about the philosophy of Molecular Notes [here](https://reasonabledeviations.com/2022/04/18/molecular-notes-part-1/) and more about the Obsidian implementation [here]([here](https://reasonabledeviations.com/2022/06/12/molecular-notes-part-2/)).
+This repository contains my Obsidian implementation of **Molecular Notes** – a Second Brain system that I use to organise my thinking. You can read about the philosophy of Molecular Notes [here](https://reasonabledeviations.com/2022/04/18/molecular-notes-part-1/) and more about the Obsidian implementation [here]([here](https://reasonabledeviations.com/2022/06/12/molecular-notes-part-2/)).
 
 
 ## Basic setup instructions
@@ -16,7 +16,6 @@ This repository contains my Obsidian implementation of Molecular Notes -- a Seco
 	3.  (Optional) set hotkey in Settings -> Hotkeys -> Templates: Insert Template -> ⌘T
 5. Check you have the below plugins enabled
 6. (Optional) Change the colour theme to something you like!
-
 
 ### Plugins
 
@@ -45,6 +44,32 @@ Community plugins:
 - Obsidian git: I like having an extra backup to a private github
 - Tag wrangler: very useful extension for renaming tags
 
+
+## Advanced setup
+
+Make sure you have python 3 installed on your system. The helper script can be run from your Obsidian Vault:
+
+```
+cd ObsidianVault && python _scripts/obsidian_util.py
+```
+
+In my `~/.zshrc` I then created an alias for this, such that when I type `obsidian` into terminal my script runs. 
+
+```
+alias obsidian="cd $HOME/ObsidianVault && python _scripts/obsidian_util.py"
+```
+
+The Polymer dashboard (a spaced repetition tool) requires `streamlit` to be installed (`pip install streamlit`). It can be run using:
+
+```
+cd ObsidianVault && python _scripts/dashboard.py
+```
+
+
+
+## Organising my Second Brain
+
+The ideas behind this are discussed in the blog posts, but here is a reference.
 
 ### Folders
 
@@ -89,22 +114,3 @@ I use tags to represent "is-a" relations (i.e types)
 	- trading-strat: a trading strategy
 	- instrument: a financial instrument
 
-## Advanced
-
-The helper script can be run from your Obsidian Vault:
-
-```
-cd ObsidianVault && python _scripts/obsidian_util.py
-```
-
-In my `~/.zshrc` I then created an alias for this, such that when I type `obsidian` into terminal my script runs. 
-
-```
-alias obsidian="cd $HOME/ObsidianVault && python _scripts/obsidian_util.py"
-```
-
-The Polymer dashboard (a spaced repetition tool) requires `streamlit` to be installed (`pip install streamlit`). It can be run using:
-
-```
-cd ObsidianVault && python _scripts/dashboard.py
-```
