@@ -1,5 +1,3 @@
-# Molecular Notes
-
 ![logo](http://reasonabledeviations.com/assets/images/secondbrain1/logo_big.png)
 
 This repository contains my Obsidian implementation of **Molecular Notes** – a Second Brain system that I use to organise my thinking. You can read about the philosophy of Molecular Notes [here](https://reasonabledeviations.com/2022/04/18/molecular-notes-part-1/) and more about the Obsidian implementation [here]([here](https://reasonabledeviations.com/2022/06/12/molecular-notes-part-2/)).
@@ -7,15 +5,16 @@ This repository contains my Obsidian implementation of **Molecular Notes** – a
 
 ## Basic setup instructions
 
-1. Install [Obsidian](https://obsidian.md/) and create an Obsidian Vault (a folder to store all your notes). Mine is named `ObsidianVault`.
-2. Clone this repository into your vault (click the `Code` button, then `Download ZIP`, and copy-paste the contents into your vault)
+1. Install [Obsidian](https://obsidian.md/) and create an Obsidian Vault (a folder to store all your notes). Mine is named `ObsidianVault` and I put it in my home folder.
+2. Clone this repository into your vault (on GitHub click the green `Code` button, then `Download ZIP`, and copy-paste the contents into your vault using Finder or File explorer)
 3. In Obsidian, go to Settings -> Files & Links -> Default location for new attachments -> _attachments  (make this folder if it doesn't exist).
-4. Set up templatesemplates:
+4. Set up templates:
 	1. Settings -> Core plugins -> Templates (switch on). 
-	2.  Settings -> Templates -> Template folder location ->. _templates.
-	3.  (Optional) set hotkey in Settings -> Hotkeys -> Templates: Insert Template -> ⌘T
-5. Check you have the below plugins enabled
-6. (Optional) Change the colour theme to something you like!
+	2. Settings -> Templates -> Template folder location -> _templates.
+	3. (Optional) set hotkey in Settings -> Hotkeys -> Templates: Insert Template -> ⌘T
+5. Check you have the below plugins enabled: Settings -> Core Plugins
+6. (Optional) Change the colour theme to something you like! You can find this in Settings -> Appearance -> Themes
+
 
 ### Plugins
 
