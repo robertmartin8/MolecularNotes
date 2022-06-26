@@ -62,9 +62,16 @@ alias obsidian="cd $HOME/ObsidianVault && python _scripts/obsidian_util.py"
 The Polymer dashboard (a spaced repetition tool) requires `streamlit` to be installed (`pip install streamlit`). It can be run using:
 
 ```
-cd ObsidianVault && python _scripts/dashboard.py
+cd ObsidianVault && streamit run _scripts/dashboard.py
 ```
 
+## Troubleshooting polymer
+
+If you are having trouble with Polymer, please follow the below steps:
+
+1. Shut down the dashboard (e.g ctrl-C wherever you ran `streamlit run _scripts/dashboard.py`)
+2. Delete the `_scripts/db.json` file. **Note:** this will delete your current flashcard progress
+3. Re-run the dashboard
 
 
 ## Organising my Second Brain
