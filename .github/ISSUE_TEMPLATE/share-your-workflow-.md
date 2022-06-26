@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-**Desired modification**
+**Desired modification** :thinking:
 
 [e.g: I wanted to integrate with "x app"]
 
-**My new workflow**
+**My new workflow** :rocket:
 
 [e.g: My new workflow is to copy highlights from x app into a new obsidian note and ...]
