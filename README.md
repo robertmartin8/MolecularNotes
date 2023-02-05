@@ -77,10 +77,13 @@ If you are having trouble with Polymer, please follow the below steps:
 
 ### GPT embeddings
 
+See [this blog post](https://reasonabledeviations.com/2023/02/05/gpt-for-second-brain/) for more information.
+
 `_scripts/gpt_search.py` implements a smart search. To get it working:
 
-1. Put in your OpenAI key at the top of the file.
-2. Open terminal and create an alias. My tool is called `nmr` but you can call it something else. 
+1. Install the dependencies: `pip install openai tiktoken tenacity click tabulate`.
+2. Put in your OpenAI key at the top of the file.
+3. Open terminal and create an alias. My tool is called `nmr` but you can call it something else. 
 
 ```
 alias nmr="cd $HOME/ObsidianVault && python _scripts/gpt_search.py"
