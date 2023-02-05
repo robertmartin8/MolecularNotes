@@ -61,13 +61,13 @@ In my `~/.zshrc` I then created an alias for this, such that when I type `obsidi
 alias obsidian="cd $HOME/ObsidianVault && python _scripts/obsidian_util.py"
 ```
 
+### Polymer dashboard
+
 The Polymer dashboard (a spaced repetition tool) requires `streamlit` to be installed (`pip install streamlit`). It can be run using:
 
 ```
 cd ObsidianVault && streamit run _scripts/polymer.py
 ```
-
-## Troubleshooting Polymer
 
 If you are having trouble with Polymer, please follow the below steps:
 
@@ -75,6 +75,16 @@ If you are having trouble with Polymer, please follow the below steps:
 2. Delete the `_scripts/db.json` file. **Note:** this will delete your current flashcard progress
 3. Re-run the dashboard
 
+### GPT embeddings
+
+`_scripts/gpt_search.py` implements a smart search. To get it working:
+
+1. Put in your OpenAI key at the top of the file.
+2. Open terminal and create an alias. My tool is called `nmr` but you can call it something else. 
+
+```
+alias nmr="cd $HOME/ObsidianVault && python _scripts/gpt_search.py"
+```
 
 ## Organising my Second Brain
 
