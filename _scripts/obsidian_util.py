@@ -113,9 +113,9 @@ def notes_to_review():
     for f in files:
         file_contents = read_file(vault_path + f)
         if (
-            "#atom" not in file_contents
-            and "#todo" not in file_contents
+            "#todo" not in file_contents
             and f != "__OBSIDIAN_META__.md"
+            and f != "README.md"
         ):
             print(f.replace(".md", ""))
 
@@ -170,7 +170,10 @@ if __name__ == "__main__":
     move_selector_to_folder("Type: #topic", "Topics")
     move_selector_to_folder("Type: #author", "Authors")
     move_selector_to_folder("Type: #molecule", "Molecules")
-    move_selector_to_folder(f"Type: #source", "Sources")
+    move_selector_to_folder("Type: #source", "Sources")
+    move_selector_to_folder("Type: #atom", "Atoms")
+    move_selector_to_folder("Type: #dailynotes", "Daily Notes")
+    
 
     create_authors()
     create_topics()
