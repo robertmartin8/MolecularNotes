@@ -2,7 +2,7 @@ import os
 import re
 
 vault_path = "./"
-LINK_REGEX = "\[\[([\w\s\-\+\.&!?,;]+)\]\]"
+LINK_REGEX = "\[\[([\w'\s\-\+\.&!?,;]+)\]\]"
 
 def list_files_in_directory(dir=vault_path):
     """
