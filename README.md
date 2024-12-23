@@ -52,7 +52,7 @@ Community plugins:
 
 ### General helper
 
-This script moves Authors/Sources/Molecules into their folders, identifies unlinked notes (orphans), and surfaces notes with #todo tags. 
+This script moves Authors/Sources/Molecules/Topics into their folders, identifies unlinked notes (orphans), and surfaces notes with #todo tags. 
 
 Make sure you have python 3 installed on your system. The helper script can be run from your Obsidian Vault:
 
@@ -72,12 +72,12 @@ For more advanced functionality, use Python Scripter.
 
 You want to configure it like this:
 
-- Python Script Pathj: `_scripts`
+- Python Script Path: `_scripts`
 - Default Python Executable: `python3` (just the alias is fine)
 
 Restart Obsidian to load the scripts, and go to settings where your scripts will be displayed. For this script, enable "Pass Vault Path" only, and you're done.
 
-Optional: You can set a hotkey to run this script, I've got it set to Cmd+R.
+Optional: You can set a hotkey to run this script, I've got it set to ⌘R.
 
 ### Polymer dashboard
 
