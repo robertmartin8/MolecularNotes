@@ -1,10 +1,10 @@
 import os
 import re
+import sys
 
-vault_path = "./"
+LINK_REGEX = "\[\[([\w\s'`\-\+\.&!?,;]+)\]\]"
 
-
-def list_files_in_directory(dir=vault_path):
+def list_files_in_directory(dir):
     """
     Reads all files in the directory and returns a list of the file paths
     """
@@ -15,7 +15,7 @@ def list_files_in_directory(dir=vault_path):
     return file_paths
 
 
-def list_files_in_directory_recursive(dir=vault_path):
+def list_files_in_directory_recursive(dir):
     """
     Reads all files in the directory and returns a list of the file paths recursively
     """
@@ -23,7 +23,7 @@ def list_files_in_directory_recursive(dir=vault_path):
     for root, dirs, files in os.walk(dir):
         for f in files:
             if f.endswith(".md"):
-                file_paths.append(f"{root}/{f}")
+                file_paths.append(os.path.join(root, f))
     return file_paths
 
 
@@ -45,73 +45,75 @@ def read_file_lines(file_path):
     return file_contents
 
 
-def move_selector_to_folder(selector, folder):
+def move_selector_to_folder(selector, folder, vault_path):
     # e.g selector = "Type: #topic"
-    files = list_files_in_directory()
+    files = list_files_in_directory(vault_path)
     for f in files:
-        file_contents = read_file(vault_path + f)
+        file_contents = read_file(os.path.join(vault_path, f))
         if selector in file_contents:
             print(f"{f.replace('.md', '')} --> {folder}")
-            os.rename(vault_path + f, f"{vault_path}{folder}/{f}")
+            os.rename(os.path.join(vault_path, f), os.path.join(vault_path, folder, f))
 
 
-def create_authors():
-    dirname = f"{vault_path}Sources"
+def create_authors(vault_path):
+    dirname = os.path.join(vault_path, "Sources")
     files = list_files_in_directory(dirname)
     for f in files:
-        lines = read_file_lines(f"{dirname}/{f}")
+        lines = read_file_lines(os.path.join(dirname, f))
         for line in lines:
             if "Author:" in line:
                 author_string = line.split(":")[1].strip()
-                for author_tag in re.findall("\[\[([\w'\s-]+)\]\]", author_string):
+                for author_tag in re.findall(LINK_REGEX, author_string):
                     # check if author_tag is in Authors/ or in the main folder
                     # if not, create a new file in Authors/ containing the string "Type: #author"
                     if (
                         f"{author_tag}.md"
-                        in list_files_in_directory(f"{vault_path}Authors")
-                        or f"{author_tag}.md" in list_files_in_directory()
+                        in list_files_in_directory(os.path.join(vault_path, "Authors"))
+                        or f"{author_tag}.md" in list_files_in_directory(vault_path)
                     ):
                         continue
                     else:
                         print(f"Creating new author: {author_tag}")
                         with open(
-                            f"{vault_path}Authors/" + author_tag + ".md", "w"
+                            os.path.join(vault_path, "Authors", author_tag, ".md"),
+                            "w"
                         ) as f:
                             f.write(f"Type: #author")
 
 
-def create_topics():
-    dirname = vault_path
+def create_topics(dirname):
     files = list_files_in_directory(dirname)
     for f in files:
-        lines = read_file_lines(f"{dirname}{f}")
+        lines = read_file_lines(os.path.join(dirname, f))
         for line in lines:
             if "Topics:" in line:
                 cat_string = line.split(":")[1].strip()
-                for cat_tag in re.findall("\[\[([\w'\s-]+)\]\]", cat_string):
+                for cat_tag in re.findall(LINK_REGEX, cat_string):
                     # check if cat_tag is in Authors/ or in the main folder
                     # if not, create a new file in Authors/ containing the string "Type: #author"
                     if (
                         f"{cat_tag}.md"
-                        in list_files_in_directory(f"{vault_path}Topics")
-                        or f"{cat_tag}.md" in list_files_in_directory()
+                        in list_files_in_directory(os.path.join(vault_path, "Topics"))
+                        or f"{cat_tag}.md" in list_files_in_directory(vault_path)
                     ):
                         continue
                     else:
                         print(f"Creating new topic: {cat_tag}")
-                        with open(f"{vault_path}Topics/" + cat_tag + ".md", "w") as f:
+                        with open(
+                        os.path.join(vault_path, "Topics", cat_tag, ".md"),
+                        "w") as f:
                             f.write(f"Type: #topic")
 
 
-def notes_to_review():
+def notes_to_review(vault_path):
     """
     Find all files in the main directory that need attention (non atoms, orphans, todos).
     """
     print("\nPlease review the following files")
     print("=================================")
-    files = list_files_in_directory()
+    files = list_files_in_directory(vault_path)
     for f in files:
-        file_contents = read_file(vault_path + f)
+        file_contents = read_file(os.path.join(vault_path, f))
         if (
             "#atom" not in file_contents
             and "#todo" not in file_contents
@@ -124,14 +126,14 @@ def notes_to_review():
     not_linked_to = []
     not_linking = []
 
-    all_files = list_files_in_directory_recursive()
+    all_files = list_files_in_directory_recursive(vault_path)
 
     for f in all_files:
-        file_contents = read_file(vault_path + f)
+        file_contents = read_file(os.path.join(vault_path, f))
         if "#todo" in file_contents:
             todos.append(f.replace(".md", "").replace(vault_path, "").strip("/"))
         # Find words in [[...]] and add to mentioned
-        links = re.findall("\[\[([\w'\s-]+)\]\]", file_contents)
+        links = re.findall(LINK_REGEX, file_contents)
         if len(links) == 0:
             # These notes don't link to anything
             not_linking.append(f.split("/")[-1].replace(".md", ""))
@@ -148,7 +150,7 @@ def notes_to_review():
     orphans = [
         note
         for note in set(not_linked_to).intersection(set(not_linking))
-        if note + ".md" not in os.listdir("_templates") and "__" not in note
+        if note + ".md" not in os.listdir(os.path.join(vault_path, "_templates")) and "__" not in note
     ]
 
     if len(todos) > 0:
@@ -165,13 +167,16 @@ def notes_to_review():
 
 
 if __name__ == "__main__":
+    # Allow you to pass in a vault_path from anywhere, otherwise it defaults to the current directory you call the Python script from
+    
+    vault_path = "./" if len(sys.argv) == 1 else sys.argv[1]
     print("\nCleaning up Obsidian")
     print("=====================")
-    move_selector_to_folder("Type: #topic", "Topics")
-    move_selector_to_folder("Type: #author", "Authors")
-    move_selector_to_folder("Type: #molecule", "Molecules")
-    move_selector_to_folder(f"Type: #source", "Sources")
+    move_selector_to_folder("Type: #topic", "Topics", vault_path)
+    move_selector_to_folder("Type: #author", "Authors", vault_path)
+    move_selector_to_folder("Type: #molecule", "Molecules", vault_path)
+    move_selector_to_folder(f"Type: #source", "Sources", vault_path)
 
-    create_authors()
-    create_topics()
-    notes_to_review()
+    create_authors(vault_path)
+    create_topics(vault_path)
+    notes_to_review(vault_path)
