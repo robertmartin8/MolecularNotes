@@ -45,9 +45,14 @@ Community plugins:
 - Mind Map: occasionally useful to visualise notes as a mindmap
 - Obsidian git: I like having an extra backup to a private github
 - Tag wrangler: very useful extension for renaming tags
+- Python Scripter: handy extension for in-app Python script calls
 
 
-## Advanced setup
+## Advanced setup (Python scripting)
+
+### General helper
+
+This script moves Authors/Sources/Molecules into their folders, identifies unlinked notes (orphans), and surfaces notes with #todo tags. 
 
 Make sure you have python 3 installed on your system. The helper script can be run from your Obsidian Vault:
 
@@ -60,6 +65,19 @@ In my `~/.zshrc` I then created an alias for this, such that when I type `obsidi
 ```
 alias obsidian="cd $HOME/ObsidianVault && python _scripts/obsidian_util.py"
 ```
+
+#### Enable [Python Scripter](https://github.com/nickrallison/obsidian-python-scripter)
+
+For more advanced functionality, use Python Scripter. 
+
+You want to configure it like this:
+
+- Python Script Pathj: `_scripts`
+- Default Python Executable: `python3` (just the alias is fine)
+
+Restart Obsidian to load the scripts, and go to settings where your scripts will be displayed. For this script, enable "Pass Vault Path" only, and you're done.
+
+Optional: You can set a hotkey to run this script, I've got it set to Cmd+R.
 
 ### Polymer dashboard
 
