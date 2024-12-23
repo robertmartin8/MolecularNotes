@@ -2,7 +2,7 @@ import os
 import re
 
 vault_path = "./"
-
+LINK_REGEX = "\[\[([\w'\s\-\+\.&!?,;]+)\]\]"
 
 def list_files_in_directory(dir=vault_path):
     """
@@ -63,7 +63,7 @@ def create_authors():
         for line in lines:
             if "Author:" in line:
                 author_string = line.split(":")[1].strip()
-                for author_tag in re.findall("\[\[([\w'\s-]+)\]\]", author_string):
+                for author_tag in re.findall(LINK_REGEX, author_string):
                     # check if author_tag is in Authors/ or in the main folder
                     # if not, create a new file in Authors/ containing the string "Type: #author"
                     if (
@@ -88,7 +88,7 @@ def create_topics():
         for line in lines:
             if "Topics:" in line:
                 cat_string = line.split(":")[1].strip()
-                for cat_tag in re.findall("\[\[([\w'\s-]+)\]\]", cat_string):
+                for cat_tag in re.findall(LINK_REGEX, cat_string):
                     # check if cat_tag is in Authors/ or in the main folder
                     # if not, create a new file in Authors/ containing the string "Type: #author"
                     if (
@@ -131,7 +131,7 @@ def notes_to_review():
         if "#todo" in file_contents:
             todos.append(f.replace(".md", "").replace(vault_path, "").strip("/"))
         # Find words in [[...]] and add to mentioned
-        links = re.findall("\[\[([\w'\s-]+)\]\]", file_contents)
+        links = re.findall(LINK_REGEX, file_contents)
         if len(links) == 0:
             # These notes don't link to anything
             not_linking.append(f.split("/")[-1].replace(".md", ""))
