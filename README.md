@@ -1,6 +1,6 @@
 ![logo](http://reasonabledeviations.com/assets/images/secondbrain1/logo_big.png)
 
-This repository contains my Obsidian implementation of **Molecular Notes** – a Second Brain system that I use to organise my thinking. You can read about the philosophy of Molecular Notes [here](https://reasonabledeviations.com/2022/04/18/molecular-notes-part-1/) and more about the Obsidian implementation [here](https://reasonabledeviations.com/2022/06/12/molecular-notes-part-2/)).
+This repository contains my Obsidian implementation of **Molecular Notes** – a Second Brain system that I use to organise my thinking. You can read about the philosophy of Molecular Notes [here](https://reasonabledeviations.com/2022/04/18/molecular-notes-part-1/) and more about the Obsidian implementation [here](https://reasonabledeviations.com/2022/06/12/molecular-notes-part-2/).
 
 **Note:** I am not accepting PRs as this repo represents my personal workflow. *However*, if you have a use case that the current iteration of MolecularNotes doesn't address, it would be awesome if you could [create an issue](https://github.com/robertmartin8/MolecularNotes/issues) and share the modification you made so that others can get some inspiration!
 
