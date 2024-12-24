@@ -2,6 +2,7 @@ import os
 import re
 import sys
 
+
 LINK_REGEX = "\[\[([\w\s'`\-\+\.&!?,;]+)\]\]"
 
 def list_files_in_directory(dir):
@@ -168,7 +169,6 @@ def notes_to_review(vault_path):
 
 if __name__ == "__main__":
     # Allow you to pass in a vault_path from anywhere, otherwise it defaults to the current directory you call the Python script from
-    
     vault_path = "./" if len(sys.argv) == 1 else sys.argv[1]
     print("\nCleaning up Obsidian")
     print("=====================")
