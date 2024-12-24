@@ -2,8 +2,7 @@ import os
 import re
 import sys
 
-
-LINK_REGEX = "\[\[([\w\s'`\-\+\.&!?,;]+)\]\]"
+LINK_REGEX = "\[\[([\w\s'`\-\+\.&!?,;=]+)\]\]"
 
 def list_files_in_directory(dir):
     """
@@ -76,7 +75,7 @@ def create_authors(vault_path):
                     else:
                         print(f"Creating new author: {author_tag}")
                         with open(
-                            os.path.join(vault_path, "Authors", author_tag, ".md"),
+                            os.path.join(vault_path, "Authors", author_tag + ".md"),
                             "w"
                         ) as f:
                             f.write(f"Type: #author")
@@ -101,7 +100,7 @@ def create_topics(dirname):
                     else:
                         print(f"Creating new topic: {cat_tag}")
                         with open(
-                        os.path.join(vault_path, "Topics", cat_tag, ".md"),
+                        os.path.join(vault_path, "Topics", cat_tag + ".md"),
                         "w") as f:
                             f.write(f"Type: #topic")
 
